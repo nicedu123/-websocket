@@ -1,0 +1,356 @@
+<!DOCTYPE html>  
+<html>  
+<head>  
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />  
+<script language="JavaScript" src="http://code.jquery.com/jquery-1.11.0.js"></script>  
+<!-- <script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script> -->
+<title>无标题文档</title>  
+<style>  
+#textcontent {  
+    border: 1px solid #cccccc;  
+    width: 500px;  
+    min-height: 100px;  
+}  
+body{ 
+    background:black;
+    /*cursor: url('some-cursor.ico'), default;*/
+}  
+#c1{ 
+    background:white;
+    top: 40px;
+    /*width:80%;*/
+    left: 330px;
+    position: absolute;
+}  
+span{ color:white;}  
+.interactive
+{
+        top: 869px;
+    position: absolute;
+    left: 330px;
+}
+#inptxt
+{
+    width: 400px;
+    height: 42px;
+    border-radius: 6px;   
+
+}
+#submit
+{
+    margin-left: 418px;
+    width: 62px;
+    height: 48px;
+    background:#2f435e;  
+    font-weight: 900;
+    line-height: 45px;
+    text-align: center;
+    border-radius: 6px;
+    position: absolute;
+    top: 0px;
+}
+#submit:hover
+{ 
+    background:#385f9e;
+}
+.color_selector
+{
+    position: absolute;
+    top: 39px;
+    left: 1136px;
+    width: 200px;
+    height: 300px;
+    /*background-color: red;*/
+}
+#color1
+{
+    position: absolute;
+    background-color: rgb(138,43,226);
+    width: 50px;
+    height:50px;
+
+    top: 2px;
+    left: 2px;
+    border: 4px inset #aef;
+}
+#color2
+{
+    position: absolute;
+    background-color: rgb(0,0,255);
+    width: 50px;
+    height:50px;
+
+    top: 2px;
+    left: 54px;
+    border: 4px inset #aef;
+}
+#color3
+{
+    position: absolute;
+    background-color: rgb(0,255,255);
+    width: 50px;
+    height:50px;
+
+    top: 54px;
+    left: 2px;
+    border: 4px inset #aef;
+}
+#color4
+{
+    position: absolute;
+    background-color: rgb(0,255,0);
+    width: 50px;
+    height:50px;
+
+    top: 54px;
+    left: 54px;
+    border: 4px inset #aef;
+}
+#color5
+{
+    position: absolute;
+    background-color: rgb(255,0,0);
+    width: 50px;
+    height:50px;
+
+    top: 104px;
+    left: 2px;
+    border: 4px inset #aef;
+}
+#color6
+{
+    position: absolute;
+    background-color: rgb(255,255,0);
+    width: 50px;
+    height:50px;
+
+    top: 104px;
+    left: 54px;
+    border: 4px inset #aef;
+}
+#color7
+{
+    position: absolute;
+    background-color: rgb(128,138,135);
+    width: 50px;
+    height:50px;
+
+    top: 154px;
+    left: 2px;
+    border: 4px inset #aef;
+}
+#color8
+{
+    position: absolute;
+    background-color: rgb(0,0,0);
+    width: 50px;
+    height:50px;
+    top: 154px;
+    left: 54px;
+    border: 4px inset #aef;
+}
+#base_color
+{
+    position: absolute;
+    left:2px;
+    top: 2px;
+}
+#more_color
+{
+    position: absolute;
+    top: 242px;
+    left: 4px;
+    width: 105px;
+    height: 26px;
+}
+#color_signal
+{
+    position: absolute;
+    top: 221px;
+    left: 14px;
+    color: #fff;
+
+}
+#width_selector
+{
+    position: absolute;
+    top: 338px;
+    left: 1137px;
+}
+input[type="range"] {
+    -webkit-box-shadow: 0 1px 0 0px #424242, 0 1px 0 #060607 inset, 0px 2px 10px 0px black inset, 1px 0px 2px rgba(0, 0, 0, 0.4) inset, 0 0px 1px rgba(0, 0, 0, 0.6) inset;
+    margin-top: 2px;
+    background-color: #fff;
+    border-radius: 15px;
+    width: 125px;
+    -webkit-appearance: none;
+    height: 14px;
+}
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    cursor: default;
+    top: 0px;
+    height: 25px;
+    width: 15px;
+    /*transform: translateY(-4px);*/
+    background: none repeat scroll 0 0 #777;
+    border-radius: 15px;
+    -webkit-box-shadow: 0 -1px 1px black inset;
+}
+#width_value_selector
+{
+    position: absolute;
+    top: 20px;
+}
+</style>  
+<script>  
+
+
+linewidth = 1;
+rgb_value = 'rgb(0,0,0)';
+// linewidth = document.getElementById("width_value_selector").value; 
+
+function change(){ 
+    var num=document.getElementById("width_value_selector"); 
+    linewidth=num.value; 
+    console.log(linewidth)
+} 
+
+
+function changecolor(ev)
+{ 
+
+    var color;
+    switch(ev)
+    {
+    case 'color1':
+         color1='rgb(138,43,226)';
+         break;
+    case 'color2':
+          color1='rgb(0,0,255)';
+          break;
+    case 'color3':
+        color1='rgb(0,255,255)';
+        break;
+    case 'color4':
+        color1='rgb(0,255,0)';
+        break;
+    case 'color5':
+        color1='rgb(255,0,0)';
+        break;
+    case 'color6':
+         color1='rgb(255,255,0)';
+         break;
+    case 'color7':
+       color1='rgb(128,138,135)';
+       break;
+    case 'color8':
+        color1='rgb(0,0,0)';
+        break;
+    }
+    rgb_value= color1;
+    console.log(rgb_value)
+}
+console.log(linewidth)
+
+function change_color_selector_more(colorValue)
+{rgb_value = colorValue;}
+
+window.onload = function(){  
+
+
+    var oC = document.getElementById('c1');  
+      
+    var oGC = oC.getContext('2d');    
+      
+    oC.onmousedown = function(ev){  
+        var ev = ev || window.event; 
+        oGC.beginPath(); 
+        oGC.moveTo(ev.clientX-oC.offsetLeft,ev.clientY-oC.offsetTop);  
+        console.log(oC.offsetLeft)
+        console.log(ev.clientX)
+        document.onmousemove = function(ev){  
+            var ev = ev || window.event;  
+            oGC.lineTo(ev.clientX-oC.offsetLeft,ev.clientY-oC.offsetTop);  
+            oGC.lineWidth = linewidth;
+            oGC.strokeStyle = rgb_value; 
+            oGC.stroke();  
+        };  
+        document.onmouseup = function(){  
+            document.onmousemove = null;  
+            document.onmouseup = null;  
+        };  
+    };  
+};  
+  
+var ws = new WebSocket("ws://127.0.0.1:3000?t=test");  
+ws.onopen = function() {  
+    console.log("连接状态", ws);  
+    $("#show").html("连接状态;" + ws.readyState + "</br>");  
+    console.log("open");  
+    ws.open("start");  
+};  
+ws.onmessage = function(evt) {  
+    // console.log(evt.data)  
+    // alert(evt.data);  
+    $("#show").append(evt.data + "</br>");  
+};  
+ws.onclose = function(evt) {  
+    console.log("WebSocketClosed!");  
+    console.log(evt);  
+};  
+ws.onerror = function(evt) {  
+    console.log("WebSocketError!");  
+};  
+  
+function send() {  
+    var msg = $("#message").val();  
+    var key = $("#token").val();  
+    var name = $("#name").val();  
+    var str = "{name:'" + name + "',msg:'" + msg + "',key:'" + key + "'}";  
+    console.log("发送", str);  
+    ws.send(str);  
+};  
+  
+function exit() {  
+    var r = ws.close();  
+    console.log("退出", r);  
+}  
+
+</script>  
+</head>  
+  
+<body>  
+    <div id="textcontent">  
+    </div>  
+    <input type="text" id="message" name="" value="" placeholder="">  
+    <input type="text" id="name" value="" placeholder="昵称;">  
+    <a href="javascript:void(0)" onclick="send()">发送</a>  
+    <a href="javascript:void(0)" onclick="exit()">退出</a>  
+    <div class='interactive'>
+       <input id='inptxt' placeholder='猜到结果了吗？~~~~'>
+       <span id='submit'>确定</span>
+    </div>
+    <canvas id="c1" width="800" height="800">  
+        <span>不支持canvas浏览器</span>  
+    </canvas> <!--默认：宽300 高150-->  
+    <div class='color_selector'>
+         <div id='base_color'>
+             <div onclick="changecolor(id)" id='color1'></div>
+             <div onclick="changecolor(id)" id='color2'></div>
+             <div onclick="changecolor(id)" id='color3'></div>
+             <div onclick="changecolor(id)" id='color4'></div>
+             <div onclick="changecolor(id)" id='color5'></div>
+             <div onclick="changecolor(id)" id='color6'></div>
+             <div onclick="changecolor(id)" id='color7'></div>
+             <div sytle='background-color: rgb(0,0,0);' onclick="changecolor(id)" id='color8'></div>
+         </div>
+         <div id='color_signal'>更多颜色选择</div>
+         <input id='more_color' type="color" value="#FFFFFF" oninput="change_color_selector_more(more_color.value)">
+    </div>
+    <div id='width_selector'>
+          <div style='color:#fff;left:10px;position:absolute;width:120px'>线条大小选择</div>
+          <input  id='width_value_selector' type="range" min="1" max="20" value='1' onchange='change()'/>
+    </div>
+</body>  
+</html>  
